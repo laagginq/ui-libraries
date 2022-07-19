@@ -402,7 +402,6 @@ do
             Color = theme.textcolor,
             OutlineColor = theme.textborder,
             Position = utility:Position(0, 4, 0, 2, inner_frame)
-            RichText = true,
         })
         --
         local inner_frame_inline = utility:Create("Frame", {Vector2.new(4,18), inner_frame}, {
