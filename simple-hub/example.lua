@@ -1,0 +1,18 @@
+local SimpleUi = loadstring(game:HttpGet("https://raw.githubusercontent.com/laagginq/ui-libraries/main/simple-hub/src.lua"))()
+local Main = SimpleUi:create('Leak by CenterHub')
+local Menu = Main:Menu('Center')
+local Page = Menu:Page()
+Page:Label('Center Hub')
+Page:Button('Button by Center',false,function()
+    print("CenterNo1ee")
+end)
+Page:Toggle('Toggle by Center',false,false,false,function(t) -- arg 1 Text , arg 2 ไม่รู้ , arg 3 เปิด - ปิด , arg 4 ไม่รู้ , arg 5 callback
+    print(t)
+end)
+Page:Button('Button by Center2',false,function()
+    print("CenterNo1")
+end)
+Page:Slider('Center Slider',1,10,5,function(x)
+    print(x)
+end)
+ -- แกะมาได้แค่นี้ By Taco_Potato#9999|| -- ห้ามนำไปแจกต่อนะจ๊ะ XD
