@@ -60,7 +60,6 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	Description.TextSize = 12.000
 	Description.TextStrokeTransparency = 0.500
 	Description.TextXAlignment = Enum.TextXAlignment.Left
-	spawn(funtion()
 	    Notification:TweenPosition(UDim2.new(1, -400, 0, 75), "Out", "Sine", 0.35)
 	    wait(0.35)
 	    Line:TweenSize(UDim2.new(0, 450, 0, 4), "Out", "Linear", Delay)
@@ -68,7 +67,6 @@ function NotificationLibrary:Notify(TitleText, Desc, Delay)
 	    Notification:TweenPosition(UDim2.new(1, 5, 0, 75), "Out", "Sine", 0.35)
 	    wait(0.35)
 	    Notification:Destroy()
-	end)
 end
 
 return NotificationLibrary
