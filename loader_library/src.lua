@@ -42,6 +42,10 @@ function Loader:Create(info)
 	local image = info.ImageID
 	local callback = info.Callback 
 	
+	if game.CoreGui:FindFirstChild(name) then
+		game.CoreGui:FindFirstChild(name):Destroy()
+	end
+	
 	-- // UI
 	
 	local Login = Instance.new("ScreenGui")
@@ -58,7 +62,7 @@ function Loader:Create(info)
 	local Load = Instance.new("TextButton")
 	local UICorner_3 = Instance.new("UICorner")
 
-	Login.Name = "Login"
+	Login.Name = name
 	Login.Parent = game.CoreGui
 	Login.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -173,6 +177,14 @@ function Loader:Create(info)
 
 	dragify(Main)
 	
+end
+
+function Loader:Delete(name)
+	if game.CoreGui:FindFirstChild(name) then
+		game.CoreGui:FindFirstChild(name):Destroy()
+	else
+		error("[Loader]: Could not be found.")
+	end
 end
 
 return Loader
