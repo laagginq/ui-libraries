@@ -7,6 +7,7 @@ local Loader = loadstring(game:HttpGet("https://raw.githubusercontent.com/laaggi
 Loader:Create({
     Name = "Evolution",
     ImageID = "rbxassetid://14222444137",
+    SaveKey = true,
     Callback = function(EnteredKey) 
         if EnteredKey == "xzisthebest" then 
             print("Whitelisted")
@@ -62,12 +63,16 @@ end
 function Loader:Create(info)
 	local name = info.Name
 	local image = info.ImageID
+	local savekey = info.SaveKey
 	local callback = info.Callback 
 	
 	if game.CoreGui:FindFirstChild(name) then
 		game.CoreGui:FindFirstChild(name):Destroy()
 	end
 	
+	if isfile(name..".key") then
+		writefile(name..".key")
+	end
 	-- // UI
 	
 	local Login = Instance.new("ScreenGui")
@@ -193,9 +198,17 @@ function Loader:Create(info)
 		Hidden.Text = string.rep('•', #TextBox.text)
 	end)
 	
+	
 	Load.MouseButton1Click:Connect(function()
+		if savekey then
+			writefile(name..".key",TextBox.Text)
+		end
 		task.spawn(callback,TextBox.Text)
 	end)
+	
+	if savekey then
+		TextBox.Text = readfile(name..".key")
+	end
 
 	dragify(Main)
 	
