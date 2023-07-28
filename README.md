@@ -33,7 +33,7 @@ i do not own these uis i just make docs/examples for the uis if you would like t
 ![Preview](https://github.com/laagginq/ui-libraries/blob/main/simple-hub/Screenshot%202022-08-14%20030933.png?raw=true)
 
 # Splix
-![Preview]([https://github.com/laagginq/ui-libraries/tree/main/splix](https://github.com/laagginq/ui-libraries/blob/main/splix/Screenshot%202022-07-20%20141801.png?raw=true))
+![Preview](https://github.com/laagginq/ui-libraries/blob/main/splix/Screenshot%202022-07-20%20141801.png?raw=true)
 
 # Ven
 ![Preview](https://github.com/laagginq/ui-libraries/blob/main/ven/Screenshot%202022-10-19%20194647.png?raw=true)
