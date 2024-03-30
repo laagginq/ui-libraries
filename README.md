@@ -43,3 +43,7 @@ i do not own these uis i just make docs/examples for the uis if you would like t
 
 # Youtube
 ![Preview](https://github.com/laagginq/ui-libraries/blob/main/yt-lib/Screenshot%202022-08-14%20030302.png?raw=true)
+
+# Loader Library (Made by me)
+
+![Preview](https://github.com/laagginq/ui-libraries/blob/main/loader_library/image.png?raw=true)
