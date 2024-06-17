@@ -182,8 +182,6 @@ function Library:Create(info)
 		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout_2.Padding = UDim.new(0, 3)
 
-		Flags[TabName] = {}
-
 		task.spawn(function()
 			TabButton.MouseButton1Click:Connect(function()
 				for index, tabs in pairs(MainFrame:GetChildren()) do 
