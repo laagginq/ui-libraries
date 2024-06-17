@@ -298,7 +298,7 @@ function Library:Create(info)
 			Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Dropdown.BorderSizePixel = 0
 			Dropdown.Size = UDim2.new(0, 533, 0, 31)
-			Dropdown.ZIndex = 3
+			Dropdown.ZIndex = 2
 
 			DropdownDetector.Name = "DropdownDetector"
 			DropdownDetector.Parent = Dropdown
