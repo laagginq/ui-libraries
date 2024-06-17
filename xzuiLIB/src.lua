@@ -78,7 +78,7 @@ function Library:Create(info)
 	Main_Title.TextXAlignment = Enum.TextXAlignment.Left
 
     UserInputService.InputBegan:Connect(function(k)
-        if k == ToggleWindowBind then 
+        if k.KeyCode == ToggleWindowBind then 
             Main.Visible = not Main.Visible
         end
     end)
@@ -440,7 +440,6 @@ function Library:Create(info)
 			SliderButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			SliderButton.BorderSizePixel = 0
 			SliderButton.Size = UDim2.new(0.05, 0, 1, 0)
-			SliderButton.AnchorPoint = Vector2.new(0.5,0)
 
 			UICorner_2.CornerRadius = UDim.new(0, 4)
 			UICorner_2.Parent = SliderButton
