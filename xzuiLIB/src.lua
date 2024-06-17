@@ -474,7 +474,7 @@ function Library:Create(info)
 			end)
 
 			local defaultPosition = ((Def - Min) / (Max - Min)) * (SliderBG.AbsoluteSize.X - SliderButton.AbsoluteSize.X)
-			SliderButton.Position = UDim2.new(0.5, defaultPosition, 0, 0)
+			SliderButton.Position = UDim2.new(0, defaultPosition, 0, 0)
 		
 		end
 
