@@ -152,7 +152,7 @@ function Library:Create(info)
 
 		TabButton.Name = TabName
 		TabButton.Parent = SideMenu
-		TabButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+		TabButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 		TabButton.BackgroundTransparency = 0.050
 		TabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		TabButton.BorderSizePixel = 0
@@ -244,7 +244,7 @@ function Library:Create(info)
 
 			ButtonDetector.Name = "ButtonDetector"
 			ButtonDetector.Parent = Button
-			ButtonDetector.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+			ButtonDetector.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 			ButtonDetector.BackgroundTransparency = 0.050
 			ButtonDetector.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ButtonDetector.BorderSizePixel = 0
@@ -303,7 +303,7 @@ function Library:Create(info)
 
 			DropdownDetector.Name = "DropdownDetector"
 			DropdownDetector.Parent = Dropdown
-			DropdownDetector.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+			DropdownDetector.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 			DropdownDetector.BackgroundTransparency = 0.050
 			DropdownDetector.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			DropdownDetector.BorderSizePixel = 0
@@ -425,7 +425,7 @@ function Library:Create(info)
 
 			SliderBG.Name = "SliderBG"
 			SliderBG.Parent = Slider
-			SliderBG.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+			SliderBG.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 			SliderBG.BackgroundTransparency = 0.050
 			SliderBG.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			SliderBG.BorderSizePixel = 0
@@ -503,7 +503,7 @@ function Library:Create(info)
 			
 			ToggleDetector.Name = "ToggleDetector"
 			ToggleDetector.Parent = Toggle
-			ToggleDetector.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+			ToggleDetector.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 			ToggleDetector.BackgroundTransparency = 0.050
 			ToggleDetector.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ToggleDetector.BorderSizePixel = 0
