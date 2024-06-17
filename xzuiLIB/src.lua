@@ -12,14 +12,7 @@ local TweenService = game:GetService("TweenService")
 
 local Mouse = LocalPlayer:GetMouse()
 
-local LibrarySettings = {
-	Toggle = Enum.KeyCode.RightShift,
-	Accent = Color3.fromRGB(106,90,205)
-}
-
-local Flags = {}
-
-local Tabs = {}
+getgenv().Flags = {}
 
 function findIndex(optionTable, targetOption)
     for index, value in ipairs(optionTable) do
@@ -84,6 +77,12 @@ function Library:Create(info)
 	Main_Title.TextSize = 20.000
 	Main_Title.TextXAlignment = Enum.TextXAlignment.Left
 
+    UserInputService.InputBegan:Connect(function(k)
+        if k == ToggleWindowBind then 
+            Main.Visible = not Main.Visible
+        end
+    end)
+
 	local dragging
     local dragStartOffset
 
@@ -98,7 +97,7 @@ function Library:Create(info)
                 dragStartOffset.X.Scale, Mouse.X + dragStartOffset.X.Offset,
                 dragStartOffset.Y.Scale, Mouse.Y + dragStartOffset.Y.Offset
             )
-            TweenService:Create(Main, TweenInfo.new(0.1), {Position = newPosition}):Play()
+            TweenService:Create(Main, TweenInfo.new(0.01), {Position = newPosition}):Play()
         end
     end)
 
@@ -280,10 +279,11 @@ function Library:Create(info)
 		
 		function PageItems:Dropdown(info)
 			local Text = info.Text or info.text or "Dropdown"
+            local Flag = info.Flag or info.flag or info.Pointer or info.pointer or TabName.."_"..Text
 			local Value = info.Def or info.Default or info.Value or info.def or info.default or info.value or 1
 			local Values = info.Values or info.Options or info.options or info.values or {"Option 1","Option 2","Option 3"}
 			local Callback = info.Callback or info.CallBack or info.CB or info.callback or function() print(Text.." Clicked") end
-			Flags[TabName][Text] = Value
+			Flags[Flag] = Values[Value]
 
 			local Dropdown = Instance.new("Frame")
 			local DropdownDetector = Instance.new("ImageButton")
@@ -378,7 +378,7 @@ function Library:Create(info)
 					DropdownOption.MouseButton1Click:Connect(function()
 						pcall(Callback,val)
 						DropdownContent.Visible = false
-						Flags[TabName][Text] = findIndex(Values,val)
+						Flags[Flag] = val
 						DropdownText.Text = Text..": "..val
 					end)
 				end)
@@ -387,12 +387,13 @@ function Library:Create(info)
 		
 		function PageItems:Slider(info)
 			local Text = info.Text or info.text or "Slider"
+            local Flag = info.Flag or info.flag or info.Pointer or info.pointer or TabName.."_"..Text
 			local Min = info.Min or info.min or info.Minimum or info.minimum or 1
 			local Def = info.Def or info.def or info.Default or info.default or 50
 			local Max = info.Max or info.max or info.Maximum or info.maxiumum or 100
 			local Suffix = info.Suffix or info.suffix or info.Ending or info.ending or "%"
 			local Callback = info.Callback or info.CallBack or info.CB or info.callback or function() print(Text.." Clicked") end
-			Flags[TabName][Text] = Def
+			Flags[Flag] = Def
 
 			local Slider = Instance.new("Frame")
 			local SliderText = Instance.new("TextLabel")
@@ -453,7 +454,7 @@ function Library:Create(info)
 				SliderButton.Position = UDim2.new(0, clampedPosition, 0, 0)
 		
 				local value = Min + (clampedPosition / sliderRange) * (Max - Min)
-				Flags[TabName][Text] = value
+				Flags[Flag] = value
 				SliderText.Text = Text .. ": " .. round(value) .. Suffix
 		
 				pcall(Callback,value)
@@ -482,9 +483,10 @@ function Library:Create(info)
 
 		function PageItems:Toggle(info)
 			local Text = info.Text or info.text or "Toggle"
+            local Flag = info.Flag or info.flag or info.Pointer or info.pointer or TabName.."_"..Text
 			local Def = info.Def or info.def or info.Default or info.default or false
 			local Callback = info.Callback or info.CallBack or info.CB or info.callback or function() print(Text.." Clicked") end
-			Flags[TabName][Text] = Def
+			Flags[Flag] = Def
 
 			local Value = Def
 
@@ -543,17 +545,18 @@ function Library:Create(info)
 						ToggleDetector.ImageTransparency = 1
 					end
 					pcall(Callback,Value)
-					Flags[TabName][Text] = Value
+					Flags[Flag] = Value
 				end)
 			end)
 		end
 
 		function PageItems:Input(info)
 			local Text = info.Text or info.text or "Text Input"
+            local Flag = info.Flag or info.flag or info.Pointer or info.pointer or TabName.."_"..Text
 			local Def = info.Def or info.def or info.Default or info.default or ""
 			local PlaceHolder = info.PlaceHolder or info.Placeholder or info.placeholder or "Text Input"
 			local Callback = info.Callback or info.CallBack or info.CB or info.callback or function() print(Text.." Clicked") end
-			Flags[TabName][Text] = Def
+			Flags[Flag] = Def
 
 			local Input = Instance.new("Frame")
 			local InputText = Instance.new("TextLabel")
@@ -611,7 +614,7 @@ function Library:Create(info)
 			task.spawn(function()
 				InputTextValue.FocusLost:Connect(function()
 					local TheText = InputTextValue.Text
-					Flags[TabName][Text] = TheText
+					Flags[Flag] = TheText
 					pcall(Callback,tostring(TheText))
 					
 				end)
