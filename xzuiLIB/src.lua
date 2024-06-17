@@ -177,6 +177,7 @@ function Library:Create(info)
 		Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
 		Tab.ScrollBarThickness = 2
 		Tab.Visible = ShowOnStartup
+        Tab.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
 		UIListLayout_2.Parent = Tab
 		UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
