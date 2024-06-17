@@ -171,11 +171,11 @@ function Library:Create(info)
 		Tab.BackgroundTransparency = 1.000
 		Tab.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		Tab.BorderSizePixel = 0
-		Tab.ClipsDescendants = false
+		Tab.ClipsDescendants = true
 		Tab.Selectable = false
 		Tab.Size = UDim2.new(0, 533, 0, 312)
 		Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
-		Tab.ScrollBarThickness = 2
+		Tab.ScrollBarThickness = 0
 		Tab.Visible = ShowOnStartup
         Tab.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
@@ -341,7 +341,7 @@ function Library:Create(info)
 			DropdownContent.Visible = false
 			DropdownContent.ZIndex = 3
 			DropdownContent.CanvasSize = UDim2.new(0, 0, 0, 0)
-			DropdownContent.ScrollBarThickness = 2
+			DropdownContent.ScrollBarThickness = 1
 
 			UICorner_2.CornerRadius = UDim.new(0, 4)
 			UICorner_2.Parent = DropdownContent
