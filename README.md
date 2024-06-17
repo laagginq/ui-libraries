@@ -47,3 +47,7 @@ i do not own these uis i just make docs/examples for the uis if you would like t
 # Loader Library (Made by me)
 
 ![Preview](https://github.com/laagginq/ui-libraries/blob/main/loader_library/image.png?raw=true)
+
+# xz ui Library (Made by me)
+
+![Preview](https://github.com/laagginq/ui-libraries/blob/main/xzuiLIB/image%20(2).png?raw=true)
