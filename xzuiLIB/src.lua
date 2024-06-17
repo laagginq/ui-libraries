@@ -508,7 +508,7 @@ function Library:Create(info)
 			ToggleDetector.BorderSizePixel = 0
 			ToggleDetector.Position = UDim2.new(0.941999972, 0, 0, 0)
 			ToggleDetector.Size = UDim2.new(0, 31, 0, 31)
-			ToggleDetector.Image = "rbxassetid://5959696880"
+			ToggleDetector.Image = "rbxassetid://17184386129"
 
 			if Value then 
 				ToggleDetector.ImageTransparency = 0
