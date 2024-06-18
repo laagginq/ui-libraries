@@ -401,10 +401,10 @@ function Library:Create(info)
 		
 					task.spawn(function()
 						DropdownOption.MouseButton1Click:Connect(function()
-							pcall(Callback,val)
 							DropdownContent.Visible = false
 							Flags[Flag] = val
 							DropdownText.Text = Text..": "..val
+							pcall(Callback,val)
 						end)
 					end)
 				end
@@ -449,10 +449,10 @@ function Library:Create(info)
 		
 					task.spawn(function()
 						DropdownOption.MouseButton1Click:Connect(function()
-							pcall(Callback,val)
 							DropdownContent.Visible = false
 							Flags[Flag] = val
 							DropdownText.Text = Text..": "..val
+							pcall(Callback,val)
 						end)
 					end)
 				end
