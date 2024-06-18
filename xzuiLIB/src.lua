@@ -416,6 +416,42 @@ function Library:Create(info)
 				CallBack = cb
 			end
 
+			function Element:UpdateValues(table)
+				Values = table
+				for i,v in pairs(DropdownContent:GetChildren()) do 
+					if v:IsA("TextButton") then 
+						v:Destroy()
+					end
+				end
+				for index, val in pairs(Values) do 
+					local DropdownOption = Instance.new("TextButton")
+					local UICorner_3 = Instance.new("UICorner")
+					DropdownOption.Name = val
+					DropdownOption.Parent = DropdownContent
+					DropdownOption.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+					DropdownOption.BackgroundTransparency = 0.050
+					DropdownOption.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					DropdownOption.BorderSizePixel = 0
+					DropdownOption.Size = UDim2.new(0, 189, 0, 22)
+					DropdownOption.Font = Enum.Font.Code
+					DropdownOption.Text = val
+					DropdownOption.TextColor3 = Color3.fromRGB(255, 255, 255)
+					DropdownOption.TextSize = 14.000
+	
+					UICorner_3.CornerRadius = UDim.new(0, 4)
+					UICorner_3.Parent = DropdownOption
+	
+					task.spawn(function()
+						DropdownOption.MouseButton1Click:Connect(function()
+							pcall(Callback,val)
+							DropdownContent.Visible = false
+							Flags[Flag] = val
+							DropdownText.Text = Text..": "..val
+						end)
+					end)
+				end
+			end
+
 			return Element
 		end
 		
