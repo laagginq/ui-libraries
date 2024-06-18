@@ -357,7 +357,7 @@ function Library:Create(info)
 			DropdownContent.ClipsDescendants = true
 			DropdownContent.Position = UDim2.new(0.645104527, 0, 1, 0)
 			DropdownContent.Selectable = false
-			DropdownContent.Size = UDim2.new(0, 189, 0, 104)
+			DropdownContent.Size = UDim2.new(0, 189, 0, 200)
 			DropdownContent.Visible = false
 			DropdownContent.ZIndex = 3
 			DropdownContent.CanvasSize = UDim2.new(0, 0, 0, 0)
