@@ -223,6 +223,14 @@ function Library:Create(info)
 			LabelText.TextColor3 = Color3.fromRGB(255, 255, 255)
 			LabelText.TextSize = 15.000
 			LabelText.TextXAlignment = Enum.TextXAlignment.Left
+
+			local Element = {}
+
+			function Element:SetText(text)
+				LabelText.Text = tostring(text)
+			end
+
+			return Element
 		end
 
 		function PageItems:Button(info)
@@ -274,6 +282,18 @@ function Library:Create(info)
 					pcall(Callback)
 				end)
 			end)
+
+			local Element = {}
+
+			function Element:SetText(text)
+				ButtonText.Text = tostring(text)
+			end
+
+			function Element:SetCallback(cb)
+				CallBack = cb
+			end
+
+			return Element
 		end
 		
 		function PageItems:Dropdown(info)
@@ -354,34 +374,48 @@ function Library:Create(info)
 					DropdownContent.Visible = not DropdownContent.Visible
 				end)
 			end)
-
-			for index, val in pairs(Values) do 
-				local DropdownOption = Instance.new("TextButton")
-				local UICorner_3 = Instance.new("UICorner")
-				DropdownOption.Name = val
-				DropdownOption.Parent = DropdownContent
-				DropdownOption.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-				DropdownOption.BackgroundTransparency = 0.050
-				DropdownOption.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				DropdownOption.BorderSizePixel = 0
-				DropdownOption.Size = UDim2.new(0, 189, 0, 22)
-				DropdownOption.Font = Enum.Font.Code
-				DropdownOption.Text = val
-				DropdownOption.TextColor3 = Color3.fromRGB(255, 255, 255)
-				DropdownOption.TextSize = 14.000
-
-				UICorner_3.CornerRadius = UDim.new(0, 4)
-				UICorner_3.Parent = DropdownOption
-
-				task.spawn(function()
-					DropdownOption.MouseButton1Click:Connect(function()
-						pcall(Callback,val)
-						DropdownContent.Visible = false
-						Flags[Flag] = val
-						DropdownText.Text = Text..": "..val
+			task.spawn(function()
+				for index, val in pairs(Values) do 
+					local DropdownOption = Instance.new("TextButton")
+					local UICorner_3 = Instance.new("UICorner")
+					DropdownOption.Name = val
+					DropdownOption.Parent = DropdownContent
+					DropdownOption.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+					DropdownOption.BackgroundTransparency = 0.050
+					DropdownOption.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					DropdownOption.BorderSizePixel = 0
+					DropdownOption.Size = UDim2.new(0, 189, 0, 22)
+					DropdownOption.Font = Enum.Font.Code
+					DropdownOption.Text = val
+					DropdownOption.TextColor3 = Color3.fromRGB(255, 255, 255)
+					DropdownOption.TextSize = 14.000
+	
+					UICorner_3.CornerRadius = UDim.new(0, 4)
+					UICorner_3.Parent = DropdownOption
+	
+					task.spawn(function()
+						DropdownOption.MouseButton1Click:Connect(function()
+							pcall(Callback,val)
+							DropdownContent.Visible = false
+							Flags[Flag] = val
+							DropdownText.Text = Text..": "..val
+						end)
 					end)
-				end)
+				end
+			end)
+
+			local Element = {}
+
+			function Element:SetText(text)
+				Text = tostring(text)
+				DropdownText.Text = Text..": "..Flags[Flag]
 			end
+
+			function Element:SetCallback(cb)
+				CallBack = cb
+			end
+
+			return Element
 		end
 		
 		function PageItems:Slider(info)
@@ -476,7 +510,20 @@ function Library:Create(info)
 
 			local defaultPosition = ((Def - Min) / (Max - Min)) * (SliderBG.AbsoluteSize.X - SliderButton.AbsoluteSize.X)
 			SliderButton.Position = UDim2.new(0, defaultPosition, 0, 0)
-		
+
+			local Element = {}
+
+			function Element:SetText(text)
+				Text = tostring(text)
+				SliderText.Text = Text..": "..Flags[Flag]
+			end
+
+			function Element:SetCallback(cb)
+				CallBack = cb
+			end
+
+
+			return Element
 		end
 
 		function PageItems:Toggle(info)
@@ -546,6 +593,30 @@ function Library:Create(info)
 					Flags[Flag] = Value
 				end)
 			end)
+
+			local Element = {}
+
+			function Element:SetText(text)
+				Text = tostring(text)
+				ToggleText.Text = Text..": "..Flags[Flag]
+			end
+
+			function Element:SetValue(bool)
+				Value = bool
+				Flags[Flag] = Value
+				if Value then 
+					ToggleDetector.ImageTransparency = 0
+				else
+					ToggleDetector.ImageTransparency = 1
+				end
+			end
+
+			function Element:SetCallback(cb)
+				CallBack = cb
+			end
+
+
+			return Element
 		end
 
 		function PageItems:Input(info)
@@ -617,6 +688,20 @@ function Library:Create(info)
 					
 				end)
 			end)
+
+			local Element = {}
+
+			function Element:SetText(text)
+				Text = tostring(text)
+				InputText.Text = Text..": "..Flags[Flag]
+			end
+
+			function Element:SetCallback(cb)
+				CallBack = cb
+			end
+
+
+			return Element
 		end
 		return PageItems
 
