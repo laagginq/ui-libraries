@@ -298,12 +298,12 @@ function Library:Create(info)
 		
 		function PageItems:Dropdown(info)
 			local Text = info.Text or info.text or "Dropdown"
-            local Flag = info.Flag or info.flag or info.Pointer or info.pointer or TabName.."_"..Text
+			local Flag = info.Flag or info.flag or info.Pointer or info.pointer or TabName.."_"..Text
 			local Value = info.Def or info.Default or info.Value or info.def or info.default or info.value or 1
 			local Values = info.Values or info.Options or info.options or info.values or {"Option 1","Option 2","Option 3"}
 			local Callback = info.Callback or info.CallBack or info.CB or info.callback or function() print(Text.." Clicked") end
 			Flags[Flag] = Values[Value]
-
+		
 			local Dropdown = Instance.new("Frame")
 			local DropdownDetector = Instance.new("ImageButton")
 			local UICorner = Instance.new("UICorner")
@@ -311,7 +311,7 @@ function Library:Create(info)
 			local DropdownContent = Instance.new("ScrollingFrame")
 			local UICorner_2 = Instance.new("UICorner")
 			local UIListLayout44 = Instance.new("UIListLayout")
-
+		
 			Dropdown.Name = Text
 			Dropdown.Parent = Tab
 			Dropdown.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -320,7 +320,7 @@ function Library:Create(info)
 			Dropdown.BorderSizePixel = 0
 			Dropdown.Size = UDim2.new(0, 533, 0, 31)
 			Dropdown.ZIndex = 2
-
+		
 			DropdownDetector.Name = "DropdownDetector"
 			DropdownDetector.Parent = Dropdown
 			DropdownDetector.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -330,10 +330,10 @@ function Library:Create(info)
 			DropdownDetector.Position = UDim2.new(0.941999972, 0, 0, 0)
 			DropdownDetector.Size = UDim2.new(0, 31, 0, 31)
 			DropdownDetector.Image = "rbxassetid://11552476728"
-
+		
 			UICorner.CornerRadius = UDim.new(0, 4)
 			UICorner.Parent = DropdownDetector
-
+		
 			DropdownText.Name = "DropdownText"
 			DropdownText.Parent = Dropdown
 			DropdownText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -347,7 +347,7 @@ function Library:Create(info)
 			DropdownText.TextColor3 = Color3.fromRGB(255, 255, 255)
 			DropdownText.TextSize = 15.000
 			DropdownText.TextXAlignment = Enum.TextXAlignment.Left
-
+		
 			DropdownContent.Name = "DropdownContent"
 			DropdownContent.Parent = Dropdown
 			DropdownContent.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
@@ -362,13 +362,19 @@ function Library:Create(info)
 			DropdownContent.ZIndex = 3
 			DropdownContent.CanvasSize = UDim2.new(0, 0, 0, 0)
 			DropdownContent.ScrollBarThickness = 1
-
+		
 			UICorner_2.CornerRadius = UDim.new(0, 4)
 			UICorner_2.Parent = DropdownContent
-
+		
 			UIListLayout44.Parent = DropdownContent
 			UIListLayout44.SortOrder = Enum.SortOrder.LayoutOrder
-
+		
+			-- Make sure CanvasSize updates with content
+			local function updateCanvasSize()
+				DropdownContent.CanvasSize = UDim2.new(0, 0, 0, UIListLayout44.AbsoluteContentSize.Y)
+			end
+			UIListLayout44:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateCanvasSize)
+		
 			task.spawn(function()
 				DropdownDetector.MouseButton1Click:Connect(function()
 					DropdownContent.Visible = not DropdownContent.Visible
@@ -389,10 +395,10 @@ function Library:Create(info)
 					DropdownOption.Text = val
 					DropdownOption.TextColor3 = Color3.fromRGB(255, 255, 255)
 					DropdownOption.TextSize = 14.000
-	
+		
 					UICorner_3.CornerRadius = UDim.new(0, 4)
 					UICorner_3.Parent = DropdownOption
-	
+		
 					task.spawn(function()
 						DropdownOption.MouseButton1Click:Connect(function()
 							pcall(Callback,val)
@@ -402,19 +408,20 @@ function Library:Create(info)
 						end)
 					end)
 				end
+				updateCanvasSize() -- Update canvas size after adding all options
 			end)
-
+		
 			local Element = {}
-
+		
 			function Element:SetText(text)
 				Text = tostring(text)
 				DropdownText.Text = Text..": "..Flags[Flag]
 			end
-
+		
 			function Element:SetCallback(cb)
 				CallBack = cb
 			end
-
+		
 			function Element:UpdateValues(table)
 				Values = table
 				for i,v in pairs(DropdownContent:GetChildren()) do 
@@ -436,10 +443,10 @@ function Library:Create(info)
 					DropdownOption.Text = val
 					DropdownOption.TextColor3 = Color3.fromRGB(255, 255, 255)
 					DropdownOption.TextSize = 14.000
-	
+		
 					UICorner_3.CornerRadius = UDim.new(0, 4)
 					UICorner_3.Parent = DropdownOption
-	
+		
 					task.spawn(function()
 						DropdownOption.MouseButton1Click:Connect(function()
 							pcall(Callback,val)
@@ -449,10 +456,11 @@ function Library:Create(info)
 						end)
 					end)
 				end
+				updateCanvasSize() -- Update canvas size after adding new options
 			end
-
+		
 			return Element
-		end
+		end		
 		
 		function PageItems:Slider(info)
 			local Text = info.Text or info.text or "Slider"
