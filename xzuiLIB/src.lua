@@ -327,7 +327,6 @@ function Library:Create(info)
 			DropdownDetector.BackgroundTransparency = 0.050
 			DropdownDetector.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			DropdownDetector.BorderSizePixel = 0
-			DropdownContent.ClipsDescendants = true
 			DropdownDetector.Position = UDim2.new(0.941999972, 0, 0, 0)
 			DropdownDetector.Size = UDim2.new(0, 31, 0, 31)
 			DropdownDetector.Image = "rbxassetid://11552476728"
@@ -355,7 +354,7 @@ function Library:Create(info)
 			DropdownContent.BackgroundTransparency = 0.050
 			DropdownContent.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			DropdownContent.BorderSizePixel = 0
-			DropdownContent.ClipsDescendants = false
+			DropdownContent.ClipsDescendants = true
 			DropdownContent.Position = UDim2.new(0.645104527, 0, 1, 0)
 			DropdownContent.Selectable = false
 			DropdownContent.Size = UDim2.new(0, 189, 0, 104)
