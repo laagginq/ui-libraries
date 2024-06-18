@@ -417,6 +417,12 @@ function Library:Create(info)
 				Text = tostring(text)
 				DropdownText.Text = Text..": "..Flags[Flag]
 			end
+
+			function Element:SetValue(val)
+				Flags[Flag] = val
+				DropdownText.Text = Text..": "..val
+				pcall(Callback,val)
+			end
 		
 			function Element:SetCallback(cb)
 				CallBack = cb
